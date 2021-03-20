@@ -68,13 +68,29 @@ public:
         }
     }
 
+    int length()
+    {
+        int len = 0;
+        if (head != NULL)
+        {
+            Node *tmp = head;
+            while (tmp != NULL)
+            {
+                tmp = tmp->next;
+                len++;
+            }
+        }
+
+        return len;
+    }
+
     void delete_from_head()
     {
         if (head == NULL)
         {
             cout << "the list is empty. Nothing deleted!" << endl;
         }
-        else 
+        else
         {
             Node *tmp = head;
             head = head->next;
@@ -83,10 +99,9 @@ public:
         }
     }
 
-
     void delete_from_tail()
     {
-        if( head == NULL)
+        if (head == NULL)
         {
             cout << "the list is empty. Nothing deleted!" << endl;
         }
@@ -94,7 +109,7 @@ public:
         {
             Node *tmp = head;
             Node *del_item;
-            while(tmp->next->next != NULL)
+            while (tmp->next->next != NULL)
             {
                 tmp = tmp->next;
             }
@@ -110,7 +125,7 @@ public:
         if (head == NULL)
         {
             cout << "the list is empty. Nothing deleted!" << endl;
-        } 
+        }
         else
         {
             Node *tmp = head;
@@ -120,7 +135,7 @@ public:
                 head = tmp->next;
                 delete tmp;
             }
-            else 
+            else
             {
                 while (tmp->next->value != val)
                 {
@@ -138,6 +153,7 @@ public:
 int main()
 {
     SLlist list;
+    cout << "The length of the list: " << list.length() << endl;
     list.delete_value(7);
     list.delete_from_head();
     list.delete_from_tail();
@@ -163,6 +179,8 @@ int main()
 
     list.delete_value(13);
     list.print();
+
+    cout << "The length of the list: " << list.length() << endl;
 
     return 0;
 }
